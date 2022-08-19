@@ -3,11 +3,11 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {},
     colors: {
-      primary: '#04476D',
+      primary: colors.slate,
       transparent: 'transparent',
       current: 'currentColor',
       black: colors.black,
@@ -20,5 +20,5 @@ module.exports = {
       sky: colors.sky
     }
   },
-  plugins: [],
+  plugins: []
 }
