@@ -3,13 +3,14 @@ import './App.css'
 
 import Layout from './components/Layout'
 import Tabs from './components/Tabs'
+import Newsletter from './domain/forms/Newsletter'
 
 function App() {
   const tabs = [
     {
       slug: 'newsletter',
       label: 'Newsletter',
-      content: <div>Lista Newsletter</div>
+      content: <Newsletter />
     },
     {
       slug: 'notice',
