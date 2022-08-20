@@ -40,7 +40,7 @@ function App() {
         activeTab={activeTab}
         onSelectTab={(selectedTab) => setActiveTab(selectedTab)}
       />
-      <div className="mt-8">
+      <div className="mt-6">
         {
           tabs.find((tab) => {
             return tab.slug === activeTab
