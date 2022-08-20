@@ -8,10 +8,10 @@ const Tabs = ({ tabs, activeTab, onSelectTab }) => {
           <div
             onClick={() => onSelectTab(tab.slug)}
             aria-current={`${activeTab == tab.slug ? 'page' : ''}`}
-            className={`inline-block p-4 rounded-t-lg cursor-pointer ${
+            className={`inline-block p-4 rounded-t-lg cursor-pointer text-base text-left ${
               activeTab == tab.slug
-                ? 'text-primary-900 bg-gray-200 active'
-                : 'hover:text-gray-600 hover:bg-gray-100'
+                ? 'text-primary-900 bg-primary-200 active'
+                : 'hover:text-gray-600 hover:bg-primary-100'
             }`}>
             {tab.label}
           </div>
