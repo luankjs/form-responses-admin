@@ -5,6 +5,7 @@ import Layout from './components/Layout'
 import Tabs from './components/Tabs'
 import Newsletter from './domain/forms/Newsletter'
 import Notice from './domain/forms/Notice'
+import Attendance from './domain/forms/Attendance'
 
 function App() {
   const tabs = [
@@ -21,7 +22,7 @@ function App() {
     {
       slug: 'attendance',
       label: 'Atendimento à imprensa',
-      content: <div>Lista Atendimento à imprensa</div>
+      content: <Attendance />
     },
     {
       slug: 'accreditation',
