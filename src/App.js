@@ -4,6 +4,7 @@ import './App.css'
 import Layout from './components/Layout'
 import Tabs from './components/Tabs'
 import Newsletter from './domain/forms/Newsletter'
+import Notice from './domain/forms/Notice'
 
 function App() {
   const tabs = [
@@ -15,7 +16,7 @@ function App() {
     {
       slug: 'notice',
       label: 'Aviso de Pauta',
-      content: <div>Lista Aviso de Pauta</div>
+      content: <Notice />
     },
     {
       slug: 'attendance',
