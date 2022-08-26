@@ -1,12 +1,13 @@
-import React, {useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { DateTime } from 'luxon'
 
 import TableList from '../../components/TableList'
 import Panel from '../../components/Panel'
 import api from '../../services/api'
 
-export default function Notice() {
+const Notice = () => {
   const [selectedResponse, setSelectedResponse] = useState(null)
+  const [items, setItems] = useState([])
   const fieldsTable = [
     { name: 'name', label: 'Nome', main: true },
     {
@@ -18,8 +19,7 @@ export default function Notice() {
   const fieldsPanel = [
     { name: 'name', label: 'Nome' },
     { name: 'email', label: 'E-mail' },
-    { name: 'profession', label: 'Profissão' },
-    { name: 'isWhatsApp', label: 'Receber no Whatsapp?' },
+    { name: 'institution', label: 'Instituição' },
     { name: 'phone', label: 'Telefone' },
     {
       name: 'created',
@@ -27,28 +27,26 @@ export default function Notice() {
       format: (value) => DateTime.fromISO(value).toFormat('dd/MM/yyyy HH:mm')
     }
   ]
-  const items = [
-    {
-      id: 'bdc04fb3-e683-4b35-b7fe-f8b2f3dae092',
-      name: 'Luan Santos',
-      email: 'luansantos@gmail.com',
-      profession: 'rer',
-      isWhatsApp: 'Sim',
-      phone: '84996135045',
-      lgpd: 'ciente',
-      created: '2022-08-19T19:27:48.323'
-    },
-    {
-      id: '9ee2ebc5-aaa5-4dad-9096-0fa7813a92d1',
-      name: 'Ademir',
-      email: 'ademir@gmail.com',
-      profession: 'rer',
-      isWhatsApp: 'Sim',
-      phone: '84996135045',
-      lgpd: 'ciente',
-      created: '2022-08-19T19:28:17.789'
-    }
-  ]
+  //const items = [
+  //  {
+  //    id: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+  //    name: 'Iramar Ferreira dos Santos',
+  //    email: 'iramarbsi@gmail.com',
+  //    institution: 'adad',
+  //    phone: '84996135045',
+  //    lgpd: 'ciente',
+  //    created: '2022-08-25T16:47:42.298Z'
+  //  },
+  //  {
+  //    id: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+  //   name: 'Iramar Ferreira dos Santos',
+  //    email: 'iramarbsi@gmail.com',
+  //    institution: 'adad',
+  //    phone: '84996135045',
+  //    lgpd: 'ciente',
+  //    created: '2022-08-25T16:47:42.300Z'
+  //  }
+  //]
 
   const onOpenResponse = (item) => {
     setSelectedResponse(item)
@@ -58,6 +56,20 @@ export default function Notice() {
     setSelectedResponse(null)
   }
 
+  // useEffect(() => {
+  //   api
+  //     .get('/newsletter')
+  //     .then((response) => console.log(response.data))
+  //     .catch((error) => console.log(error))
+  // }, [])
+  useEffect(() => {
+    console.log('You clicked times')
+    api
+      .get('/notices')
+      .then((response) => setItems(response.data))
+      .catch((error) => console.log(error))
+  }, [])
+
   return (
     <>
       <TableList
@@ -65,6 +77,7 @@ export default function Notice() {
         fields={fieldsTable}
         handleOpenResponse={(item) => onOpenResponse(item)}
       />
+      {/* {!!selectedResponse && ( */}
       <Panel
         show={!!selectedResponse}
         item={selectedResponse}
@@ -72,6 +85,9 @@ export default function Notice() {
         title="Dados da Resposta"
         handleClosePanel={onClosePanel}
       />
+      {/* )} */}
     </>
-  );
+  )
 }
+
+export default Notice

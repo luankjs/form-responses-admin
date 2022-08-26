@@ -5,7 +5,7 @@ import TableList from '../../components/TableList'
 import Panel from '../../components/Panel'
 import api from '../../services/api'
 
-const Attendance = () => {
+const Accreditation = () => {
   const [selectedResponse, setSelectedResponse] = useState(null)
   const [items, setItems] = useState([])
   const fieldsTable = [
@@ -19,37 +19,40 @@ const Attendance = () => {
   const fieldsPanel = [
     { name: 'name', label: 'Nome' },
     { name: 'email', label: 'E-mail' },
+    { name: 'role', label: 'Função' },
     { name: 'comunication', label: 'Comunicação' },
+    { name: 'rg', label: 'Documento de identificação (RG)' },
+    { name: 'cpf', label: 'CPF' },
     { name: 'phone', label: 'Telefone' },
-    { name: 'deadline', label: 'Deadline' },
-    { name: 'solicitation', label: 'Solicitação' },
     {
       name: 'created',
       label: 'Enviando em',
       format: (value) => DateTime.fromISO(value).toFormat('dd/MM/yyyy HH:mm')
     }
   ]
-  // const items = [
-  //   {
-  //     id: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-  //     name: 'Iramar Ferreira dos Santos',
-  //     email: 'iramarbsi@gmail.com',
-  //     comunication: 'rerea',
-  //     phone: '84996135045',
-  //     deadline: '25/08/2022',
-  //     solicitation: 'Entrevista com Ministro',
-  //     created: '2022-08-25T11:03:15.432Z'
-  //   },
-  //   {
-  //     id: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-  //     name: 'Iramar Ferreira dos Santos',
-  //     email: 'iramarbsi@gmail.com',
-  //     comunication: 'rerea',
-  //     phone: '84996135045',
-  //     deadline: '25/08/2022',
-  //     solicitation: 'Dados estatísticos',
-  //     created: '2022-08-25T11:08:02.469Z'
-  //   }
+  //const items = [
+  //  {
+  //   id: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+  //    name: 'Iramar Ferreira dos Santos',
+  //    email: 'iramarbsi@gmail.com',
+  //    role: 'Reporter',
+  //    comunication: 'rerea',
+  //    rg: '20202020',
+  //    cpf: '55515152',
+  //    phone: '84996135045',
+  //    created: '2022-08-25T16:51:33.564Z'
+  //  },
+  //  {
+  //    id: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+  //   name: 'Iramar Ferreira dos Santos',
+  //    email: 'iramarbsi@gmail.com',
+  //    role: 'Reporter',
+  //    comunication: 'rerea',
+  //    rg: '20202020',
+  //    cpf: '55515152',
+  //    phone: '84996135045',
+  //    created: '2022-08-25T16:51:33.568Z'
+  //  }
   // ]
 
   const onOpenResponse = (item) => {
@@ -69,7 +72,7 @@ const Attendance = () => {
   useEffect(() => {
     console.log('You clicked times')
     api
-      .get('/attendances')
+      .get('/accreditations')
       .then((response) => setItems(response.data))
       .catch((error) => console.log(error))
   }, [])
@@ -94,4 +97,4 @@ const Attendance = () => {
   )
 }
 
-export default Attendance
+export default Accreditation

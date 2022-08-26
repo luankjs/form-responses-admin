@@ -6,6 +6,7 @@ import Tabs from './components/Tabs'
 import Newsletter from './domain/forms/Newsletter'
 import Notice from './domain/forms/Notice'
 import Attendance from './domain/forms/Attendance'
+import Accreditation from './domain/forms/Accreditation'
 
 function App() {
   const tabs = [
@@ -27,7 +28,7 @@ function App() {
     {
       slug: 'accreditation',
       label: 'Credenciamento',
-      content: <div>Lista Credenciamento</div>
+      content: <Accreditation />
     }
   ]
   const [activeTab, setActiveTab] = useState('newsletter')

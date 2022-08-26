@@ -7,6 +7,7 @@ import api from '../../services/api'
 
 const Newsletter = () => {
   const [selectedResponse, setSelectedResponse] = useState(null)
+  const [items, setItems] = useState([])
   const fieldsTable = [
     { name: 'name', label: 'Nome', main: true },
     {
@@ -27,28 +28,28 @@ const Newsletter = () => {
       format: (value) => DateTime.fromISO(value).toFormat('dd/MM/yyyy HH:mm')
     }
   ]
-  const items = [
-    {
-      id: 'bdc04fb3-e683-4b35-b7fe-f8b2f3dae092',
-      name: 'Iramar Ferreira dos Santos',
-      email: 'iramarbsi@gmail.com',
-      profession: 'rer',
-      isWhatsApp: 'Sim',
-      phone: '84996135045',
-      lgpd: 'ciente',
-      created: '2022-08-19T19:27:48.323'
-    },
-    {
-      id: '9ee2ebc5-aaa5-4dad-9096-0fa7813a92d1',
-      name: 'Iramar Ferreira dos Santos',
-      email: 'iramarbsi@gmail.com',
-      profession: 'rer',
-      isWhatsApp: 'Sim',
-      phone: '84996135045',
-      lgpd: 'ciente',
-      created: '2022-08-19T19:28:17.789'
-    }
-  ]
+  //const items = [
+  //  {
+  //    id: 'bdc04fb3-e683-4b35-b7fe-f8b2f3dae092',
+  //    name: 'Iramar Ferreira dos Santos',
+  //    email: 'iramarbsi@gmail.com',
+  //    profession: 'rer',
+  //    isWhatsApp: 'Sim',
+  //    phone: '84996135045',
+  //    lgpd: 'ciente',
+  //    created: '2022-08-19T19:27:48.323'
+  //  },
+  //  {
+  //    id: '9ee2ebc5-aaa5-4dad-9096-0fa7813a92d1',
+  //    name: 'Iramar Ferreira dos Santos',
+  //    email: 'iramarbsi@gmail.com',
+  //    profession: 'rer',
+  //    isWhatsApp: 'Sim',
+  //    phone: '84996135045',
+  //    lgpd: 'ciente',
+  //    created: '2022-08-19T19:28:17.789'
+  //  }
+  //]
 
   const onOpenResponse = (item) => {
     setSelectedResponse(item)
@@ -68,7 +69,7 @@ const Newsletter = () => {
     console.log('You clicked times')
     api
       .get('/newsletters')
-      .then((response) => console.log(response.data))
+      .then((response) => setItems(response.data))
       .catch((error) => console.log(error))
   }, [])
 
